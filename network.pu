@@ -8,8 +8,8 @@ nwdiag {
     network WLAN_2_4 {
         description = "WLAN 2.4GHz";
         address = "192.168.211.0/24, 300 Mbps";
-        laptop [address = "192.168.211.58, 08:00:27:F9:67:AB", description = "<$device_laptop>\nНоутбук\nDebian 11"];
-        mobile_phone [address = "192.168.211.125, ", description = "<$cell_phone_android_proportional>\nAndroid\nСмартфон"];
+        laptop [address = "192.168.211.58, 08:00:27:f9:67:ab", description = "<$device_laptop>\nНоутбук\nDebian 11"];
+        mobile_phone [address = "192.168.211.125, d6:36:e3:d2:69:a0", description = "<$cell_phone_android_proportional>\nAndroid\nСмартфон"];
     }
 }
 
