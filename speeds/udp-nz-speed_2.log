@@ -1,0 +1,18 @@
+Connecting to host 192.168.211.125, port 5201
+[  5] local 192.168.211.58 port 44549 connected to 192.168.211.125 port 5201
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec   119 MBytes  1.00 Gbits/sec  86500  
+[  5]   1.00-2.00   sec   120 MBytes  1.01 Gbits/sec  87180  
+[  5]   2.00-3.00   sec  87.1 MBytes   731 Mbits/sec  63100  
+[  5]   3.00-4.00   sec  66.0 MBytes   554 Mbits/sec  47810  
+[  5]   4.00-5.00   sec  69.0 MBytes   579 Mbits/sec  49970  
+[  5]   5.00-6.00   sec  66.8 MBytes   560 Mbits/sec  48350  
+[  5]   6.00-7.00   sec  67.7 MBytes   568 Mbits/sec  49050  
+[  5]   7.00-8.00   sec  66.0 MBytes   554 Mbits/sec  47820  
+[  5]   8.00-9.00   sec  56.0 MBytes   470 Mbits/sec  40580  
+[  5]   9.00-10.00  sec  63.6 MBytes   534 Mbits/sec  46090  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.00  sec   782 MBytes   656 Mbits/sec  0.000 ms  0/566450 (0%)  sender
+[  5]   0.00-10.00  sec  0.00 Bytes  0.00 bits/sec  0.000 ms  0/0 (0%)  receiver
+iperf3: error - control socket has closed unexpectedly

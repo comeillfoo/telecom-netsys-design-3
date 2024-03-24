@@ -1,0 +1,20 @@
+Connecting to host 192.168.211.125, port 5201
+Reverse mode, remote host 192.168.211.125 is sending
+[  5] local 192.168.211.58 port 37857 connected to 192.168.211.125 port 5201
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-1.00   sec  4.44 MBytes  37.2 Mbits/sec  0.516 ms  630/3843 (16%)  
+[  5]   1.00-2.02   sec  2.78 MBytes  22.8 Mbits/sec  3.276 ms  13/2025 (0.64%)  
+[  5]   2.02-3.00   sec  5.10 MBytes  43.6 Mbits/sec  0.518 ms  0/3692 (0%)  
+[  5]   3.00-4.00   sec  3.95 MBytes  33.1 Mbits/sec  0.375 ms  0/2861 (0%)  
+[  5]   4.00-5.00   sec  4.48 MBytes  37.6 Mbits/sec  0.635 ms  2/3244 (0.062%)  
+[  5]   5.00-6.00   sec  4.53 MBytes  38.0 Mbits/sec  0.414 ms  0/3279 (0%)  
+[  5]   6.00-7.00   sec  1.73 MBytes  14.5 Mbits/sec  7.179 ms  18/1272 (1.4%)  
+[  5]   7.00-8.00   sec  4.77 MBytes  40.1 Mbits/sec  0.482 ms  0/3456 (0%)  
+[  5]   8.00-9.00   sec  3.63 MBytes  30.4 Mbits/sec  0.345 ms  0/2629 (0%)  
+[  5]   9.00-10.00  sec  3.98 MBytes  33.3 Mbits/sec  0.746 ms  10/2891 (0.35%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.22  sec  41.1 MBytes  33.7 Mbits/sec  0.000 ms  0/29770 (0%)  sender
+[  5]   0.00-10.00  sec  39.4 MBytes  33.0 Mbits/sec  0.746 ms  673/29192 (2.3%)  receiver
+
+iperf Done.
