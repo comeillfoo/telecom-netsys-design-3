@@ -1,0 +1,16 @@
+@startuml
+
+!include <office/Devices/cell_phone_android_proportional>
+!include <office/Devices/device_laptop>
+
+title Топология сети для эксперимента
+nwdiag {
+    network WLAN_2_4 {
+        description = "WLAN 2.4GHz";
+        address = "[TODO: addr], 300 Mbps";
+        laptop [address = "[TODO: addr]", description = "<$device_laptop>\nНоутбук\nDebian 11"];
+        mobile_phone [address = "[TODO: addr]", description = "<$cell_phone_android_proportional>\nAndroid\nСмартфон"];
+    }
+}
+
+@enduml
