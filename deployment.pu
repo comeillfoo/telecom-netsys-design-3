@@ -1,0 +1,64 @@
+@startuml
+node "<<device>> Laptop" as laptop_n {
+  node "<<vm>> VirtualBox" as vbox_n {
+    node "<<os>> Debian 11" as debian_n {
+      node "User Space" as ltop_userspace_n {
+        [iperf3] as iperf_client_c
+        [glibc] as glibc_c
+      }
+
+      node "Linux Kernel" as ltop_kernel_n {
+        [syscalls] as ltop_syscalls_c
+        [tcp] as ltop_tcp_c
+        [udp] as ltop_udp_c
+        [ipv4] as ltop_ipv4_c
+        [wlan] as ltop_wlan_c
+      }
+    }
+  }
+  [NIC] as ltop_nic_c
+}
+
+iperf_client_c -(0- glibc_c
+glibc_c -(0- ltop_syscalls_c
+ltop_syscalls_c -(0- ltop_tcp_c
+ltop_syscalls_c -(0- ltop_udp_c
+ltop_tcp_c -(0- ltop_ipv4_c
+ltop_udp_c -(0- ltop_ipv4_c
+ltop_ipv4_c -(0- ltop_wlan_c
+ltop_wlan_c -(0- ltop_nic_c
+
+node "<<device>> Smartphone" as smartphone_n {
+  node AOSP {
+    node "User Space" as phon_userspace_n {
+      node Zygote as zygote_n {
+        node "Android Runtime" as art_n {
+          [iPerf from PingTools] as iperf_server_c 
+        }
+      }
+    }
+    node "Linux Kernel" as phon_kernel_n {
+      [syscalls] as phon_syscalls_c
+      [tcp] as phon_tcp_c
+      [udp] as phon_udp_c
+      [ipv4] as phon_ipv4_c
+      [wlan] as phon_wlan_c
+    }
+  }
+  [NIC] as phon_nic_c
+}
+
+iperf_server_c -(0- phon_syscalls_c : JNI
+phon_syscalls_c -(0- phon_tcp_c
+phon_syscalls_c -(0- phon_udp_c
+phon_tcp_c -(0- phon_ipv4_c
+phon_udp_c -(0- phon_ipv4_c
+phon_ipv4_c -(0- phon_wlan_c
+phon_wlan_c -(0- phon_nic_c
+
+ltop_tcp_c -- phon_tcp_c : TCP
+ltop_udp_c -- phon_udp_c : UDP
+ltop_ipv4_c -- phon_ipv4_c : IPv4
+ltop_wlan_c -- phon_wlan_c : MAC
+ltop_nic_c -- phon_nic_c : PHY
+@enduml
