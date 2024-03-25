@@ -1,32 +1,44 @@
 @startuml
-participant iperf3 as client_iperf
-participant glibc
-participant syscalls as client_syscalls
-participant udp as client_udp
-participant ipv4 as client_ipv4
-participant wlan as client_wlan
-participant "NIC" as client_nic
+actor "Исследователь" as user
+participant "tcpdump on laptop" as tcpdump
+participant "iperf3 on laptop" as client
+participant "iPerf on smartphone" as server
 
-participant "SOC" as server_nic
-participant wlan as server_wlan
-participant ipv4 as server_ipv4
-participant udp as server_udp
-participant syscalls as server_syscalls
-participant "iPerf from PingTools" as server_iperf
+group Измерение RTT
+    loop 3 times
+        user -> server : Запустить\nсервер в iperf
+        user -> tcpdump : Запустить захват траффика
+        user -> client : Послать низкоскоростной\nTCP-траффик по iperf
+        note over client, server: Согласование\nпараметров теста
+        note over client, server: обмен по TCP
+        client --> user : Вывести статистику
+        user -> tcpdump : Сохранить захваченный траффик
+    end
+end
 
-loop send data in 10 seconds
-    client_iperf -> glibc : send(...)
-    glibc -> client_syscalls : syscall(0x121,...)
-    client_syscalls -> client_udp : __do_sys_send(...)
-    client_udp -> client_ipv4 : udp_send_skb(...)
-    client_ipv4 -> client_wlan : ip_send_skb(...)
-    client_wlan -> client_nic : ndo_start_xmit(...)
-
-    client_nic -> server_nic : Ethernet Frame
-    server_nic -> server_wlan : netif_rx(...)
-    server_wlan -> server_ipv4 : ip_rcv(...)
-    server_ipv4 -> server_udp : udp_rcv(...)
-    server_udp -> server_syscalls : __do_sys_recv(...)
-    server_syscalls -> server_iperf : syscall(0x123,...)
+group Измерение скорости
+    loop 3 times
+        user -> server : Запустить\nсервер в iperf
+        user -> tcpdump : Запустить захват траффика
+        user -> client : Послать низкоскоростной\nTCP-траффик по iperf
+        note over client, server: Согласование\nпараметров  теста
+        note over client, server: обмен по TCP
+        client --> user : Вывести статистику
+        user -> tcpdump : Сохранить захваченный траффик
+    end
+    loop 3 times
+        user -> server : Запустить сервер в iperf
+        user -> client : Послать\nUDP-траффик по iperf
+        note over client, server: Согласование\nпараметров теста
+        note over client, server: обмен по UDP\n(отправляет ""laptop"")
+        client --> user : Вывод статистики
+    end
+    loop 3 times
+        user -> server : Запустить сервер в iperf
+        user -> client : Принять\nUDP-траффик по iperf
+        note over client, server: Согласование\nпараметров теста
+        note over client, server: обмен по UDP\n(отправляет ""smartphone"")
+        client --> user : Вывод статистики
+    end
 end
 @enduml
