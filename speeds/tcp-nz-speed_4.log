@@ -1,0 +1,21 @@
+$ iperf3 -c 192.168.10.7 -NZ
+Connecting to host 192.168.10.7, port 5201
+[  5] local 192.168.10.58 port 34356 connected to 192.168.10.7 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  2.35 MBytes  19.7 Mbits/sec    0    134 KBytes       
+[  5]   1.00-2.00   sec  2.73 MBytes  22.9 Mbits/sec    0    247 KBytes       
+[  5]   2.00-3.01   sec  4.16 MBytes  34.8 Mbits/sec    0    403 KBytes       
+[  5]   3.01-4.01   sec  3.67 MBytes  30.8 Mbits/sec    0    580 KBytes       
+[  5]   4.01-5.00   sec  2.50 MBytes  21.1 Mbits/sec    3    597 KBytes       
+[  5]   5.00-6.00   sec  3.75 MBytes  31.5 Mbits/sec    0    602 KBytes       
+[  5]   6.00-7.00   sec  3.70 MBytes  31.0 Mbits/sec    2    437 KBytes       
+[  5]   7.00-8.00   sec  3.65 MBytes  30.7 Mbits/sec    0    502 KBytes       
+[  5]   8.00-9.00   sec  4.92 MBytes  41.2 Mbits/sec    0    546 KBytes       
+[  5]   9.00-10.00  sec  1.25 MBytes  10.5 Mbits/sec   24    399 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  32.7 MBytes  27.4 Mbits/sec   29             sender
+[  5]   0.00-10.06  sec  30.5 MBytes  25.5 Mbits/sec                  receiver
+
+iperf Done.
+
