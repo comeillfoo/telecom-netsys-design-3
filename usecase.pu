@@ -5,8 +5,8 @@ left to right direction
 (Измерить\nмакс. скорость) as (measure_maxspeed)
 (Измерить\nмин. RTT) as (measure_minrtt)
 
-user --> measure_maxspeed
-user --> measure_minrtt
+user -- measure_maxspeed
+user -- measure_minrtt
 
 (Передать\nTCP-траффик) as (sendrecv_tcp)
 (Запустить iperf-сервер\nна смартфоне) as (iperf_server_phone)
