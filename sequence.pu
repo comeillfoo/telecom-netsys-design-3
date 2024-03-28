@@ -1,0 +1,44 @@
+@startuml
+actor "Исследователь" as user
+participant "tcpdump on laptop" as tcpdump
+participant "iperf3 on laptop" as client
+participant "iPerf on smartphone" as server
+
+group Измерение RTT
+    loop 3 times
+        user -> server : Запустить\nсервер в iperf
+        user -> tcpdump : Запустить захват траффика
+        user -> client : Послать низкоскоростной\nTCP-траффик по iperf
+        note over client, server: Согласование\nпараметров теста
+        note over client, server: обмен по TCP
+        client --> user : Вывести статистику
+        user -> tcpdump : Сохранить захваченный траффик
+    end
+end
+
+group Измерение скорости
+    loop 3 times
+        user -> server : Запустить\nсервер в iperf
+        user -> tcpdump : Запустить захват траффика
+        user -> client : Послать низкоскоростной\nTCP-траффик по iperf
+        note over client, server: Согласование\nпараметров  теста
+        note over client, server: обмен по TCP
+        client --> user : Вывести статистику
+        user -> tcpdump : Сохранить захваченный траффик
+    end
+    loop 3 times
+        user -> server : Запустить сервер в iperf
+        user -> client : Послать\nUDP-траффик по iperf
+        note over client, server: Согласование\nпараметров теста
+        note over client, server: обмен по UDP\n(отправляет ""laptop"")
+        client --> user : Вывод статистики
+    end
+    loop 3 times
+        user -> server : Запустить сервер в iperf
+        user -> client : Принять\nUDP-траффик по iperf
+        note over client, server: Согласование\nпараметров теста
+        note over client, server: обмен по UDP\n(отправляет ""smartphone"")
+        client --> user : Вывод статистики
+    end
+end
+@enduml

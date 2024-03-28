@@ -5,30 +5,28 @@ left to right direction
 (Измерить\nмакс. скорость) as (measure_maxspeed)
 (Измерить\nмин. RTT) as (measure_minrtt)
 
-user --> measure_maxspeed
-user --> measure_minrtt
+user -- measure_maxspeed
+user -- measure_minrtt
 
 (Передать\nTCP-траффик) as (sendrecv_tcp)
 (Запустить iperf-сервер\nна смартфоне) as (iperf_server_phone)
 (Запустить iperf-клиент\nна ноутбуке) as (iperf_client_laptop)
 (Замерить RTT\nс Wireshark) as (measure_via_wireshark)
+(Замерить RTT\nс tshark) as (measure_via_tshark)
 
 measure_minrtt ..> sendrecv_tcp : <<include>>
 measure_minrtt .> measure_via_wireshark : <<include>>
+measure_via_tshark .> measure_minrtt : <<extend>>
 sendrecv_tcp ..> iperf_client_laptop : <<include>>
 sendrecv_tcp ..> iperf_server_phone : <<include>>
 
 
 (Передать\nUDP-траффик) as (sendrecv_udp)
 (Установить размеры\nRX/TX-буферов) as (set_rx_tx_bufsz)
-(Запустить iperf-сервер\nна ноутбуке) as (iperf_server_laptop)
-(Запустить iperf-клиент\nна смартфоне) as (iperf_client_phone)
 
 measure_maxspeed .> sendrecv_udp : <<include>>
 measure_maxspeed .> sendrecv_tcp : <<include>>
 set_rx_tx_bufsz .> measure_maxspeed : <<extend>>
 sendrecv_udp .> iperf_server_phone : <<include>>
-sendrecv_udp ..> iperf_server_laptop : <<include>>
 sendrecv_udp .> iperf_client_laptop : <<include>>
-sendrecv_udp ..> iperf_client_phone : <<include>>
 @enduml
